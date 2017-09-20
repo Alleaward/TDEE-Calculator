@@ -1,0 +1,29 @@
+.testBorderRed{
+  border: 3px solid red;
+}
+.testBorderGreen{
+  border: 3px solid green;
+}
+.testBorderBlue{
+  border: 3px solid blue;
+}
+.value{
+  color: green;
+  border: red 3px dotted;
+}
+/*---------------------------------Styling------------------------------------*/
+html{
+  background-color: black;
+}
+body{
+  width: 70vw;
+  background-color: rgba(255, 255, 255, 0.9);
+  margin-left: auto;
+  margin-right: auto;
+}
+#caloriesBar p{
+  color: white;
+  background-color: black;
+  text-align: center;
+  width: 8%;
+}

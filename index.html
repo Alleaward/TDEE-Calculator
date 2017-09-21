@@ -6,15 +6,23 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
   <body>
+
     <header class="container-fluid testBorderRed">
       <div class="row testBorderBlue">
-        <h1 class="col-4 testBorderGreen">MyShitnessPal<h1>
-        <button onclick="document.getElementById('modalForm').style.display='block'; ">New User</button>
-        <button>Returning User</button>
+        <a href="index.html"><h1 class="col-4 testBorderGreen">MyShitnessPal<h1></a>
       </div>
     </header>
 
-    <nav>
+    <nav class="container-fluid marginTop">
+      <section class="row">
+        <hr>
+        <form action="profile.php" method="post" target="formTarget">
+          <input type="text" placeholder="Username" name="Username">
+          <input type="submit" name="submit" class="" onclick="">
+        </form>
+        <a href="newUser.html" class="col-1">New User</a>
+        <hr>
+      </div>
     </nav>
 
     <section class="container-fluid testBorderRed">
@@ -35,19 +43,8 @@
           <p class="testBorderRed"><span class="value">-</span>%</p>
         </div>
       </div>
-      <div id="save" class="col-1">
-        <button>Save</button>
-      </div>
     </section>
 
-    <form id="modalForm" class="" action="php/newUser.php" method="post" target="formTarget" style="display:none">
-      <input type="text" placeholder="Username: " name="Username">
-      <input type="text" placeholder="Weight: " name="Weight">
-      <input type="text" placeholder="Height: " name="Height">
-      <input type="submit" name="submit" class="" onclick="document.getElementById('modalForm').style.display='none'; ">
-      <input type="submit" class="" onclick="document.getElementById('modalForm').style.display='none'; " value="Cancel">
-    </form>
-    <iframe name="formTarget" style="display:none"></iframe>
 
     <footer class="container-fluid">
       <p>&copy; Allea Ward</p>

@@ -7,9 +7,21 @@
 .testBorderBlue{
   border: 3px solid blue;
 }
+.marginTop{
+  margin-top: 1rem;
+}
+.marginLeft{
+  margin-top: 1rem;
+}
+.marginRight{
+  margin-top: 1rem;
+}
+.marginBottom{
+  margin-top: 1rem;
+}
 .value{
+  font-weight: bold;
   color: green;
-  border: red 3px dotted;
 }
 /*---------------------------------Styling------------------------------------*/
 html{

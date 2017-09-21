@@ -10,10 +10,9 @@
 ==============================================================
 */
 
-  $username = "";
-  $password = "";
-  $weight = "";
-  $height = "";
+  $username = $_POST['Username'];
+  $weight = $_POST['Weight'];
+  $height = $_POST['Height'];
 
 
 ?>

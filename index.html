@@ -2,8 +2,8 @@
 <html>
 <head>
   <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <link rel="stylesheet" href="css/bootstrap.css">
-  <link rel="stylesheet" href="css/style.css"
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
   <body>
     <header class="container-fluid testBorderRed">
@@ -15,7 +15,6 @@
     </header>
 
     <nav>
-
     </nav>
 
     <section class="container-fluid testBorderRed">
@@ -41,15 +40,18 @@
       </div>
     </section>
 
+    <form id="modalForm" class="" action="php/newUser.php" method="post" target="formTarget" style="display:none">
+      <input type="text" placeholder="Username: " name="Username">
+      <input type="text" placeholder="Weight: " name="Weight">
+      <input type="text" placeholder="Height: " name="Height">
+      <input type="submit" name="submit" class="" onclick="document.getElementById('modalForm').style.display='none'; ">
+      <input type="submit" class="" onclick="document.getElementById('modalForm').style.display='none'; " value="Cancel">
+    </form>
+    <iframe name="formTarget" style="display:none"></iframe>
+
     <footer class="container-fluid">
       <p>&copy; Allea Ward</p>
     </footer>
-
-    <form id="modalForm" class="" action="php/newUser.php" method="post" target="formTarget">
-      <input type="text" placeholder="Name: " name="Name">
-      <input type="submit" name="submit" class="formSubmit floatLeft" onclick="document.getElementById('modalForm').style.display='none'; ">
-      <input type="submit" class="formSubmit floatLeft" onclick="document.getElementById('modalForm').style.display='none'; " value="Cancel">
-    </form>
 
   </body>
 </html>

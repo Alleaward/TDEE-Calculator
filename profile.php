@@ -60,7 +60,7 @@ $userSelect .= "WHERE Username='".$username."';";
      echo "<br><br>User successfully selected.<br>";
    }
 
-   echo "<br>ID: ".$row['ID']."<br>Username: ".$row['Username']."<br>Weight: ".$row['Weight']."<br>Height: ".$row['Height']."<br>Age: ".$row['Age']."<br>Activity: ".$row['Activity'];
+   echo "<br>ID: ".$row['ID']."<br>Username: ".$row['Username']."<br>Weight: ".$row['Weight']."<br>Height: ".$row['Height']."<br>Age: ".$row['Age']."<br>Activity Modifier: ".$row['Activity'];
 
  }else{
    echo "<br><br>User was <b>NOT</b> selected.<br><br>";
@@ -107,16 +107,16 @@ echo "<br>Your Total Daily Energy Expenditure (TDEE) is: $tdee";
     <section class="container-fluid testBorderRed">
       <div class="row">
         <div id="username" class="col-12 testBorderGreen">
-          <p class="value"><?php echo " ".$row['Username']; ?></p>
+          <p class="value"><?php echo " ".htmlspecialchars($row['Username']); ?></p>
         </div>
         <div id="weight" class="col-2 testBorderGreen">
-          <p>Weight:<span class="value"><?php echo " ".$row['Weight']; ?></span>kg</p>
+          <p>Weight:<span class="value"><?php echo " ".htmlspecialchars($row['Weight']); ?></span>kg</p>
         </div>
         <div id="height" class="col-10 testBorderGreen">
-          <p>Height:<span class="value"><?php echo " ".$row['Height']; ?></span>cm</p>
+          <p>Height:<span class="value"><?php echo " ".htmlspecialchars($row['Height']); ?></span>cm</p>
         </div>
         <div id="calories" class="col-2 testBorderGreen">
-          <p>TDEE/Calories:<span class="value"> <?php echo " ".$tdee; ?></span> kCal</p>
+          <p>TDEE/Calories:<span class="value"> <?php echo " ".htmlspecialchars($tdee); ?></span> kCal</p>
         </div>
         <div id="caloriesBar" class="col-10 testBorderGreen">
           <p class="testBorderRed"><span class="value">-</span>%</p>

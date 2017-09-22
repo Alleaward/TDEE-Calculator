@@ -1,64 +1,78 @@
 <?php
 /*
 
-      File:     3. newUser.php
+      File:     getData.php
       By:       Allea Ward
-      Date:     21-Sep-2017
+      Date:     22-Sep-2017
 
-      This script adds a user to the Users table in the myShitnessPal database.
+      This script retrieves the data for the users profile.
 
 ==============================================================
 */
 
-  $username = $_POST['Username'];
-  $weight = $_POST['Weight'];
-  $height = $_POST['Height'];
-  $age = $_POST['Age'];
-  $activity = $_POST['Activity'];
+$username = $_POST['Username'];
 
-  //Fetch the login information and connect to the table securely
-  {
-    include('dbConfig.php');
-    $dbSuccess = false;
-    $dbConnected = mysqli_connect($db['hostname'],$db['username'],$db['password']);
+//Fetch the login information and connect to the table securely
+{
+  include('dbConfig.php');
+  $dbSuccess = false;
+  $dbConnected = mysqli_connect($db['hostname'],$db['username'],$db['password']);
 
-    if ($dbConnected) {
+  if ($dbConnected) {
 
-      $dbSelected = mysqli_select_db($dbConnected, $db['database']);
-      echo "Connected to ".$db['hostname']." successfully.<br><br>";
+    $dbSelected = mysqli_select_db($dbConnected, $db['database']);
+    echo "Connected to ".$db['hostname']." successfully.<br><br>";
 
-      if($dbSelected){
+    if($dbSelected){
 
-        $dbSuccess = true;
-        echo "Selected the ".$db['database']." database successfully.<br><br>";
+      $dbSuccess = true;
+      echo "Selected the ".$db['database']." database successfully.<br><br>";
 
-      }else {
-
-        echo "Failed to select DB<br><br>";
-
-      }
     }else {
 
-      echo "MySQL connection FAILED<br><br>";
+      echo "Failed to select DB<br><br>";
 
     }
+  }else {
+
+    echo "MySQL connection FAILED<br><br>";
+
   }
+}
 
-  //Create table
-  if ($dbSuccess) {
-  //Create a varible that holds our query.
-  //Create insert command, name.
-  $userInsert = "INSERT INTO myshitnesspal.users (ID, Username, Weight, Height, Age, Activity) ";
+//Create table
+if ($dbSuccess) {
+//Create a varible that holds our query.
+//Create insert command, name.
+$userSelect = "SELECT ID, Username, Weight, Height, Age, Activity FROM myshitnesspal.users ";
 
-  $userInsert .= "VALUES (ID,'".$username."', ".$weight.", ".$height.", ".$age.", ".$activity.")";
+$userSelect .= "WHERE Username='".$username."';";
 
-   echo $userInsert;
+ echo $userSelect;
 
-  if(mysqli_query($dbConnected, $userInsert)){
-    echo "User successfully inserted.<br><br>";
-  }else{
-    echo "<br><br>User was <b>NOT</b> inserted.";
-  }
-  }
+ if($userSelected = mysqli_query($dbConnected, $userSelect)){
+
+   $row = mysqli_fetch_array($userSelected, MYSQLI_ASSOC);
+
+   if($row['Username'] == null){
+     echo "<br><br>User <b>".$username."</b> does not exist....<br>";
+   }else{
+     echo "<br><br>User successfully selected.<br>";
+   }
+
+   echo "<br>ID: ".$row['ID']."<br>Username: ".$row['Username']."<br>Weight: ".$row['Weight']."<br>Height: ".$row['Height']."<br>Age: ".$row['Age']."<br>Activity Modifier: ".$row['Activity'];
+
+ }else{
+   echo "<br><br>User was <b>NOT</b> selected.<br><br>";
+ }
+
+
+$bmr = (66 + (13.7 * $row['Weight']) + (5 * $row['Height']) - (6.8 * $row['Age']));
+echo "<br>Basal Metobolic Rate: $bmr";
+$tdee = floor($bmr * $row['Activity']);
+echo "<br>Your Total Daily Energy Expenditure (TDEE) is: ".$tdee;
+}
+
+
 
 ?>

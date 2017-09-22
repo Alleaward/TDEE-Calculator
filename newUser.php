@@ -6,16 +6,16 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
   <body>
-    <header class="container-fluid testBorderRed">
-      <div class="row testBorderBlue">
-        <a href="index.html"><h1 class="col-4 testBorderGreen">MyShitnessPal<h1></a>
+    <header class="container-fluid">
+      <div class="row">
+        <a href="index.php"><h1 class="col-4">MyShitnessPal<h1></a>
       </div>
     </header>
 
     <nav class="container-fluid marginTop">
       <section class="row">
         <hr>
-        <a href="index.html" class="col-1">Home</a>
+        <a href="index.php" class="col-1">Home</a>
         <hr>
       </div>
     </nav>

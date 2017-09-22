@@ -11,6 +11,7 @@
 */
 
 $username = $_POST['Username'];
+$newUserPage = 'newUser.html';
 
 //Fetch the login information and connect to the table securely
 {
@@ -24,19 +25,15 @@ $username = $_POST['Username'];
     echo "Connected to ".$db['hostname']." successfully.<br><br>";
 
     if($dbSelected){
-
       $dbSuccess = true;
       echo "Selected the ".$db['database']." database successfully.<br><br>";
-
     }else {
-
       echo "Failed to select DB<br><br>";
-
+      exit();
     }
   }else {
-
     echo "MySQL connection FAILED<br><br>";
-
+    exit();
   }
 }
 
@@ -56,6 +53,7 @@ $userSelect .= "WHERE Username='".$username."';";
 
    if($row['Username'] == null){
      echo "<br><br>User <b>".$username."</b> does not exist....<br>";
+     exit();
    }else{
      echo "<br><br>User successfully selected.<br>";
    }
@@ -64,13 +62,14 @@ $userSelect .= "WHERE Username='".$username."';";
 
  }else{
    echo "<br><br>User was <b>NOT</b> selected.<br><br>";
+   exit();
  }
 
 
 $bmr = (66 + (13.7 * $row['Weight']) + (5 * $row['Height']) - (6.8 * $row['Age']));
 echo "<br>Basal Metobolic Rate: $bmr";
-$tdee = $bmr * $row['Activity'];
-echo "<br>Your Total Daily Energy Expenditure (TDEE) is: $tdee";
+$tdee = floor($bmr * $row['Activity']);
+echo "<br>Your Total Daily Energy Expenditure (TDEE) is: ".$tdee;
 }
 
 
@@ -86,23 +85,11 @@ echo "<br>Your Total Daily Energy Expenditure (TDEE) is: $tdee";
 </head>
   <body>
 
-    <header class="container-fluid testBorderRed">
-      <div class="row testBorderBlue">
-        <a href="index.html"><h1 class="col-4 testBorderGreen">MyShitnessPal<h1></a>
+    <header class="container-fluid">
+      <div class="row">
+        <a href="index.html"><h1 class="col-4">MyShitnessPal<h1></a>
       </div>
     </header>
-
-    <nav class="container-fluid marginTop">
-      <section class="row">
-        <hr>
-        <form id="modalForm" class="" action="php/getData.php" method="post" target="formTarget">
-          <input type="text" placeholder="Username" name="Username">
-          <input type="submit" name="submit" class="" onclick="">
-        </form>
-        <a href="newUser.html" class="col-1">New User</a>
-        <hr>
-      </div>
-    </nav>
 
     <section class="container-fluid testBorderRed">
       <div class="row">

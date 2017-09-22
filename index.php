@@ -19,9 +19,9 @@
         <form action="profile.php" method="post" >
           <p>Enter an existing user</p>
           <input type="text" placeholder="Username" name="Username">
-          <input type="submit" name="submit" class="" onclick="">
+          <input type="submit" name="submit">
         </form>
-        <a href="newUser.php" class="col-3">Click here to update or add a new user.</a>
+        <a href="newUser.php" class="col-3">Click here to a new user.</a>
         <hr>
       </div>
     </nav>

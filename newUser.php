@@ -19,8 +19,8 @@
         <hr>
       </div>
     </nav>
-
-    <form id="modalForm" class="" action="php/newUser.php" method="post" target="formTarget">
+    <p>Enter a new user.</p>
+    <form action="php/newUser.php" method="post">
       <input type="text" placeholder="Username:" name="Username">
       <input type="text" placeholder="Weight:" name="Weight">
       <input type="text" placeholder="Height:" name="Height">

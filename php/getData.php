@@ -9,13 +9,12 @@
 
 ==============================================================
 */
-
 $username = $_POST['Username'];
 $newUserPage = 'newUser.php';
 
 //Fetch the login information and connect to the table securely
 {
-  include('php/dbConfig.php');
+  include('dbConfig.php');
   $dbSuccess = false;
   $dbConnected = mysqli_connect($db['hostname'],$db['username'],$db['password']);
 
@@ -53,7 +52,8 @@ $userSelect .= "WHERE Username='".$username."';";
 
    if($row['Username'] == null){
      echo "<br><br>User <b>".$username."</b> does not exist....<br>";
-     return;
+     $tdee = 0;
+     header('Location: '.$newUserPage);
    }else{
      echo "<br><br>User successfully selected.<br>";
    }
@@ -64,7 +64,6 @@ $userSelect .= "WHERE Username='".$username."';";
    echo "<br><br>User was <b>NOT</b> selected.<br><br>";
 
  }
-
 
   $bmr = (66 + (13.7 * $row['Weight']) + (5 * $row['Height']) - (6.8 * $row['Age']));
   echo "<br>Basal Metobolic Rate: $bmr";

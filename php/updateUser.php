@@ -39,17 +39,15 @@
   if ($dbSuccess) {
   //Create a varible that holds our query.
   //Create insert command, name.
-  $userInsert = "INSERT INTO myshitnesspal.users (ID, Username, Weight, Height, Age, Activity) ";
-
-  $userInsert .= "VALUES (ID,'".$username."', ".$weight.", ".$height.", ".$age.", ".$activity.")";
+  $userInsert = "UPDATE myshitnesspal.users SET Weight=$weight, Height=$height, Age=$age, Activity=$activity WHERE username='$username'";
 
    echo $userInsert;
 
   if(mysqli_query($dbConnected, $userInsert)){
-    echo "<br><br>User successfully inserted.<br><br>";
+    echo "<br><br>User successfully updated.<br><br>";
     header('Location: '.$url);
   }else{
-    echo "<br><br>User was <b>NOT</b> inserted.";
+    echo "<br><br>User was <b>NOT</b> updated.";
   }
   }
 

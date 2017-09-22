@@ -16,7 +16,7 @@
     <nav class="container-fluid marginTop">
       <section class="row">
         <hr>
-        <form action="profile.php" method="post" target="profile.php">
+        <form action="profile.php" method="post" >
           <p>Enter an existing user</p>
           <input type="text" placeholder="Username" name="Username">
           <input type="submit" name="submit" class="" onclick="">

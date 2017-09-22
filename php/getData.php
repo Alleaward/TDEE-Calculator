@@ -11,6 +11,7 @@
 */
 
 $username = $_POST['Username'];
+$newUserPage = 'newUser.php';
 
 //Fetch the login information and connect to the table securely
 {
@@ -24,17 +25,13 @@ $username = $_POST['Username'];
     echo "Connected to ".$db['hostname']." successfully.<br><br>";
 
     if($dbSelected){
-
       $dbSuccess = true;
       echo "Selected the ".$db['database']." database successfully.<br><br>";
-
     }else {
-
       echo "Failed to select DB<br><br>";
 
     }
   }else {
-
     echo "MySQL connection FAILED<br><br>";
 
   }
@@ -44,7 +41,7 @@ $username = $_POST['Username'];
 if ($dbSuccess) {
 //Create a varible that holds our query.
 //Create insert command, name.
-$userSelect = "SELECT ID, Username, Weight, Height, Age FROM myshitnesspal.users ";
+$userSelect = "SELECT ID, Username, Weight, Height, Age, Activity FROM myshitnesspal.users ";
 
 $userSelect .= "WHERE Username='".$username."';";
 
@@ -56,21 +53,22 @@ $userSelect .= "WHERE Username='".$username."';";
 
    if($row['Username'] == null){
      echo "<br><br>User <b>".$username."</b> does not exist....<br>";
+     return;
    }else{
      echo "<br><br>User successfully selected.<br>";
    }
 
-   echo "<br>ID: ".$row['ID']."<br>Username: ".$row['Username']."<br>Weight: ".$row['Weight']."<br>Height: ".$row['Height']."<br>Age: ".$row['Age'];
+   echo "<br>ID: ".$row['ID']."<br>Username: ".$row['Username']."<br>Weight: ".$row['Weight']."<br>Height: ".$row['Height']."<br>Age: ".$row['Age']."<br>Activity Modifier: ".$row['Activity'];
 
  }else{
    echo "<br><br>User was <b>NOT</b> selected.<br><br>";
+
  }
 
 
-$bmr = (66 + (13.7 * $row['Weight']) + (5 * $row['Height']) - (6.8 * $row['Age']));
-echo "<br>Basal Metobolic Rate: $bmr";
+  $bmr = (66 + (13.7 * $row['Weight']) + (5 * $row['Height']) - (6.8 * $row['Age']));
+  echo "<br>Basal Metobolic Rate: $bmr";
+  $tdee = floor($bmr * $row['Activity']);
+  echo "<br>Your Total Daily Energy Expenditure (TDEE) is: ".$tdee;
 }
-
-
-
 ?>

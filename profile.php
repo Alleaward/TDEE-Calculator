@@ -4,7 +4,7 @@
   <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
-  <?php include('php/getData.php') ?>
+  <?php include('php/getData.php') ?> <!-- Retrieves the data -->
 </head>
   <body>
 

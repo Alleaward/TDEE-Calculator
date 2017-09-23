@@ -22,9 +22,9 @@
     <p>Enter a new user.</p>
     <form action="php/newUser.php" method="post">
       <input type="text" placeholder="Username:" name="Username">
-      <input type="text" placeholder="Weight:" name="Weight">
-      <input type="text" placeholder="Height:" name="Height">
-      <input type="text" placeholder="Age:" name="Age">
+      <input type="number" placeholder="Weight:" name="Weight">
+      <input type="number" placeholder="Height:" name="Height">
+      <input type="number" placeholder="Age:" name="Age">
       <select name="Activity">
         <option value="1.2">Sedentary: Little or no Exercise/Desk job</option>
         <option value="1.375">Lightly active: Light exercise/Sports 1 &ndash; 3 days per week</option>

@@ -51,6 +51,6 @@
   }else{
     echo "<br><br>User was <b>NOT</b> inserted.";
   }
-  }
+}
 
 ?>

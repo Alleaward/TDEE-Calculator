@@ -4,7 +4,11 @@
   <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
-  <?php include('php/getData.php'); ?> <!-- Retrieves the data -->
+
+  <?php
+    $username = $_POST['Username'];
+    include('php/getData.php');
+  ?> <!-- Retrieves the data -->
 
 </head>
   <body>
@@ -25,9 +29,9 @@
 
           <form id="updateForm" action="php/updateUser.php" method="post" style="display:none;">
             <input type="hidden" name="Username" value="<?php echo htmlspecialchars($row['Username']);?>">
-            <input type="text" placeholder="Weight:" name="Weight">
-            <input type="text" placeholder="Height:" name="Height">
-            <input type="text" placeholder="Age:" name="Age">
+            <input type="number" step="0.01" placeholder="Weight:" name="Weight" value="<?php echo htmlspecialchars($row['Weight']);?>">
+            <input type="number" placeholder="Height:" name="Height" value="<?php echo htmlspecialchars($row['Height']);?>">
+            <input type="number" placeholder="Age:" name="Age" value="<?php echo htmlspecialchars($row['Age']);?>">
             <select name="Activity">
               <option value="1.2">Sedentary: Little or no Exercise/Desk job</option>
               <option value="1.375">Lightly active: Light exercise/Sports 1 &ndash; 3 days per week</option>

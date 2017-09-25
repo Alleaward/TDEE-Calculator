@@ -12,7 +12,7 @@
 
   //Fetch the login information and connect to the table securely
 {
-  include('dbConfig.php');
+  include('../dbConfig.php');
   $dbSuccess = false;
   $dbConnected = mysqli_connect($db['hostname'],$db['username'],$db['password']);
 
@@ -45,17 +45,20 @@ if ($dbSuccess) {
   //Create table command, name.
   $createTable = "Create TABLE myShitnessPal.users (";
   //Table Parameters.
-  $createTable .= "ID INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY, ";
-  $createTable .= "Username VARCHAR(50) NOT NULL, ";
-  $createTable .= "Password VARCHAR(50)";
-  $createTable .= "Weight DECIMAL(50) NOT NULL, ";
-  $createTable .= "Height DECIMAL(50) NOT NULL, ";
+  $createTable .= "ID INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY , ";
+  $createTable .= "Username VARCHAR(50) NOT NULL UNIQUE, ";
+  $createTable .= "Weight DECIMAL(4,1) NOT NULL, ";
+  $createTable .= "Height DECIMAL(4,1) NOT NULL, ";
+  $createTable .= "Age INT(11) NOT NULL, ";
+  $createTable .= "Activity DECIMAL(4,3) NOT NULL";
   $createTable .= ")";
 
+  echo "$createTable";
+
   if(mysqli_query($dbConnected, $createTable)){
-    echo "User Table successfully created.<br><br>";
+    echo "<br><br>User Table successfully created.<br><br>";
   }else{
-    echo "User Table was <b>NOT</b> created.";
+    echo "<br><br>User Table was <b>NOT</b> created.";
   }
 }
 

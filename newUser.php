@@ -4,11 +4,13 @@
   <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <title>MyShitnessPal</title>
+
 </head>
   <body>
     <header class="container-fluid">
       <div class="row">
-        <a href="index.php"><h1 class="col-4">MyShitnessPal<h1></a>
+        <h1 class="col-4"><a href="index.php">MyShitnessPal</a></h1>
       </div>
     </header>
 
@@ -17,13 +19,13 @@
         <hr>
         <a href="index.php" class="col-1">Home</a>
         <hr>
-      </div>
+      </section>
     </nav>
     <p>Enter a new user.</p>
     <form action="php/newUser.php" method="post">
       <input type="text" placeholder="Username:" name="Username">
-      <input type="number" placeholder="Weight:" name="Weight">
-      <input type="number" placeholder="Height:" name="Height">
+      <input type="number" placeholder="Weight(kg):" name="Weight">
+      <input type="number" placeholder="Height(cm):" name="Height">
       <input type="number" placeholder="Age:" name="Age">
       <select name="Activity">
         <option value="1.2">Sedentary: Little or no Exercise/Desk job</option>

@@ -4,7 +4,7 @@
   <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
-
+  <title>MyShitnessPal</title>
   <?php
     $username = $_POST['Username'];
     include('php/getData.php');
@@ -15,7 +15,7 @@
 
     <header class="container-fluid">
       <div class="row">
-        <a href="index.php"><h1 class="col-4">MyShitnessPal<h1></a>
+        <h1 class="col-4"><a href="index.php">MyShitnessPal</a></h1>
       </div>
     </header>
 
@@ -29,8 +29,8 @@
 
           <form id="updateForm" action="php/updateUser.php" method="post" style="display:none;">
             <input type="hidden" name="Username" value="<?php echo htmlspecialchars($row['Username']);?>">
-            <input type="number" step="0.01" placeholder="Weight:" name="Weight" value="<?php echo htmlspecialchars($row['Weight']);?>">
-            <input type="number" placeholder="Height:" name="Height" value="<?php echo htmlspecialchars($row['Height']);?>">
+            <input type="number" step="0.01" placeholder="Weight(kg):" name="Weight" value="<?php echo htmlspecialchars($row['Weight']);?>">
+            <input type="number" placeholder="Height:" name="Height(cm)" value="<?php echo htmlspecialchars($row['Height']);?>">
             <input type="number" placeholder="Age:" name="Age" value="<?php echo htmlspecialchars($row['Age']);?>">
             <select name="Activity">
               <option value="1.2">Sedentary: Little or no Exercise/Desk job</option>

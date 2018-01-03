@@ -1,43 +1,17 @@
-/*.testBorderRed{
-  border: 3px solid red;
-}
-.testBorderGreen{
-  border: 3px solid green;
-}
-.testBorderBlue{
-  border: 3px solid blue;
-}*/
-.marginTop{
-  margin-top: 1rem;
-}
-.marginLeft{
-  margin-top: 1rem;
-}
-.marginRight{
-  margin-top: 1rem;
-}
-.marginBottom{
-  margin-top: 1rem;
-}
-.value{
-  font-weight: bold;
-  color: green;
+body {
+  background-color: rgba(255, 255, 255, 0.651);
 }
 
-/*---------------------------------Styling------------------------------------*/
-html{
-  background-color: black;
+#newInput {
+  border: 3px lightblue solid;
 }
-body{
-  padding: 3rem;
-  width: 70vw;
-  background-color: rgba(255, 255, 255, 0.9);
-  margin-left: auto;
-  margin-right: auto;
+
+#userInfo {
+  display: none;
+  border: 3px lightgreen solid;
 }
-#caloriesBar p{
-  color: white;
-  background-color: black;
-  text-align: center;
-  width: 8%;
+
+#loginInfo {
+  border: 3px lightcoral solid;
 }
+/*# sourceMappingURL=style.css.map */

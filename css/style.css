@@ -1,17 +1,12 @@
 body {
-  background-color: rgba(255, 255, 255, 0.651);
+  background-color: #ffffff;
 }
 
-#newInput {
-  border: 3px lightblue solid;
+footer {
+  margin-top: 20px;
 }
 
-#userInfo {
+.hideDiv {
   display: none;
-  border: 3px lightgreen solid;
-}
-
-#loginInfo {
-  border: 3px lightcoral solid;
 }
 /*# sourceMappingURL=style.css.map */

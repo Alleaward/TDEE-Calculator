@@ -17,30 +17,22 @@ newUserSubmit.addEventListener('submit', (e) => {
     e.preventDefault();
     e.stopPropagation();
     console.log('newUserSubmit');
-    
-    //Get the values from the form.	
-    var Weight = +$('#Weight').val();
-    var Height = +$('#Height').val();
-    var Age = +$('#Age').val();
-    var Activity = +$('#Activity').val();
-    //Calculate
-    var bmr = (66 + (13.7 * Weight + (5 * Height) - (6.8 * Age)));
-    var tdee = Math.floor(bmr * Activity);
-    //Go to new view
-    $('#inputForm').slideUp().fadeOut();
-    $('#information').fadeIn().slideDown();
-    $('#loginForm').slideUp().fadeOut();
-    $('#signUpForm').fadeIn().slideDown();
-    //Insert the information.
-    $('.weight').replaceWith('<p class="weight">Weight(kg): ' + Weight + '</p>');
-    $('.height').replaceWith('<p class="height">Height(cm): ' + Height + '</p>');
-    $('.age').replaceWith('<p class="age">Age: ' + Age + '</p>');
-    $('.activity').replaceWith('<p class="activity">Activity: ' + Activity + '</p>');
-    $('.tdee').replaceWith('<p class="tdee">TDEE: ' + tdee + '</p>');
+
+    // function submitForm() {
+    //     var http = new XMLHttpRequest();
+    //     http.open("POST", "<<whereverTheFormIsGoing>>", true);
+    //     http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    //     var params = "search=" +  'get search value' // probably use document.getElementById(...).value
+    //     http.send(params);
+    //     http.onload = function () {
+    //         alert(http.responseText);
+    //     }
+    // }
 
     userInfo.classList.remove("hideDiv");
     loginDiv.classList.add("hideDiv");
     newUserDiv.classList.add("hideDiv");
+
 });
 
 loginSubmit.addEventListener('submit', (e) => {
@@ -49,6 +41,9 @@ loginSubmit.addEventListener('submit', (e) => {
     console.log('loginSubmit');
     userInfo.classList.remove("hideDiv");
     loginDiv.classList.add("hideDiv");
+    newUserDiv.classList.add("hideDiv");
+
+
 });
 
 userInfoSave.addEventListener('submit', (e) => {

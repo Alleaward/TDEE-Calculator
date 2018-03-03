@@ -1,5 +1,7 @@
 body {
   background-color: #ffffff;
+  max-width: 760px;
+  margin: auto;
 }
 
 footer {

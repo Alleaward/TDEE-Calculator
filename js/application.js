@@ -1,4 +1,4 @@
-$(document).ready(function (){
+$(document).ready( () => {
     M.AutoInit();
 
     $('#inputForm').validate();
@@ -6,18 +6,18 @@ $(document).ready(function (){
     $('#signUpForm').validate();
 
     //Input form for new and returning users.
-    $('#inputForm').on('submit', function (event){
+    $('#inputForm').on('submit', (event) => {
         if ($('#inputForm').valid() == true) {
             event.stopPropagation();
             event.preventDefault();
             //Get the values from the form.	
-            var Weight = +$('#Weight').val();
-            var Height = +$('#Height').val();
-            var Age = +$('#Age').val();
-            var Activity = +$('#Activity').val();
+            let Weight = +$('#weight').val();
+            let Height = +$('#height').val();
+            let Age = +$('#age').val();
+            let Activity = +$('#activity').val();
             //Calculate
-            var bmr = (66 + (13.7 * Weight + (5 * Height) - (6.8 * Age)));
-            var tdee = Math.floor(bmr * Activity);
+            let bmr = (66 + (13.7 * Weight + (5 * Height) - (6.8 * Age)));
+            let tdee = Math.floor(bmr * Activity);
             //Go to new view
             $('#inputForm').slideUp().fadeOut();
             $('#information').fadeIn().slideDown();
@@ -32,74 +32,78 @@ $(document).ready(function (){
         }
     });
     //Returning User
-    $('#loginForm').on('submit', function (event) {
+    $('#loginForm').on('submit', (event) => {
         if ($('#loginForm').valid() == true) {
             event.stopPropagation();
             event.preventDefault();
             //Get the data
-            var Username = $('#loginForm #Username').val();
-            var Password = $('#loginForm #Password').val();
-            var Weight = 0;
-            var Height = 0;
-            var Age = 0;
-            var Activity = 0;
+            let Username = $('#loginUsername').val();
+            let Password = $('#loginPassword').val();
+            let Weight = 0;
+            let Height = 0;
+            let Age = 0;
+            let Activity = 0;
+            console.log("1");
             //Send the data.
-
-            $.post(
-                "php/retrieveUser.php",
-                { Username: Username, Password: Password },
-                function (data) {
-
+            console.log(Username + Password);
+            $.post("php/retrieveUser.php", { "Username": Username, "Password": Password })
+                .done( (data) => {
                     console.log(data);
-                    if (data === "Username or password is invalid."){
-                        alert("Username or password is invalid.")
-
-                    }else if (data === "User was <b>NOT</b> selected."){
-                        alert("Username or password is invalid.")
-
-                    }else if (data === "MySQL connection FAILED<br><br>"){
-                        alert("Could not connect to the database.")
-
-                    }else if (data === "Failed to select DB<br><br>"){
-                        alert("Could not connect to the database.")
-
+                    if (data == "Username or password is invalid."){
+                        $('.incorrectLogin').fadeIn().slideDown();
+                    }else{
+                        let rawData = JSON.parse(data);
+                        console.log("2");
+                        console.log(data);
+                        console.log(rawData);
+                        if (rawData === "Username or password is invalid."){
+                            alert("Username or password is invalid.");
+    
+                        }else if (rawData === "User was <b>NOT</b> selected."){
+                            alert("Username or password is invalid.");
+    
+                        }else if (rawData === "MySQL connection FAILED<br><br>"){
+                            alert("Could not connect to the database.");
+    
+                        }else if (rawData === "Failed to select DB<br><br>"){
+                            alert("Could not connect to the database.");
+                        }
+                        Weight = rawData.Weight;
+                        Height = rawData.Height;
+                        Age = rawData.Age;
+                        Activity = rawData.Activity;
+                        //Calculate
+                        let bmr = (66 + (13.7 * Weight + (5 * Height) - (6.8 * Age)));
+                        let tdee = Math.floor(bmr * Activity);
+                        //Populate info.
+                        $('.weight').replaceWith('<p class="weight">Weight(kg): ' + Weight + '</p>');
+                        $('.height').replaceWith('<p class="height">Height(cm): ' + Height + '</p>');
+                        $('.age').replaceWith('<p class="age">Age: ' + Age + '</p>');
+                        $('.activity').replaceWith('<p class="activity">Activity: ' + Activity + '</p>');
+                        $('.tdee').replaceWith('<p class="tdee">TDEE: ' + tdee + '</p>');
+                        //New View
+                        $('#inputForm').slideUp().fadeOut();
+                        $('#information').fadeIn().slideDown();
+                        $('#loginForm').slideUp().fadeOut();
+                        $('#signUpForm').fadeIn().slideDown();
+                        $('.incorrectLogin').slideUp().fadeOut();
                     }
-
-
-                    Weight = data.Weight;
-                    Height = data.Height;
-                    Age = data.Age;
-                    Activity = data.Activity;
-                    //Calculate
-                    var bmr = (66 + (13.7 * Weight + (5 * Height) - (6.8 * Age)));
-                    var tdee = Math.floor(bmr * Activity);
-                    //Populate info.
-                    $('.weight').replaceWith('<p class="weight">Weight(kg): ' + Weight + '</p>');
-                    $('.height').replaceWith('<p class="height">Height(cm): ' + Height + '</p>');
-                    $('.age').replaceWith('<p class="age">Age: ' + Age + '</p>');
-                    $('.activity').replaceWith('<p class="activity">Activity: ' + Activity + '</p>');
-                    $('.tdee').replaceWith('<p class="tdee">TDEE: ' + tdee + '</p>');
-                    //New View
-                    $('#inputForm').slideUp().fadeOut();
-                    $('#information').fadeIn().slideDown();
-                    $('#loginForm').slideUp().fadeOut();
-                    $('#signUpForm').fadeIn().slideDown();
                 },
                 'json'
-            );
-{
+                );
+            {
             // $.ajax({
             //     type: "POST",
             //     url: "php/retrieveUser.php",
             //     data: { "Username": Username, "Password": Password },
             //     success: function (data) {
-            //         Weight = data.Weight;
-            //         Height = data.Height;
-            //         Age = data.Age;
-            //         Activity = data.Activity;
+            //         console.log(Weight = data.Weight);
+            //         console.log(Height = data.Height);
+            //         console.log(Age = data.Age);
+            //         console.log(Activity = data.Activity);
             //         //Calculate
-            //         var bmr = (66 + (13.7 * Weight + (5 * Height) - (6.8 * Age)));
-            //         var tdee = Math.floor(bmr * Activity);
+            //         let bmr = (66 + (13.7 * Weight + (5 * Height) - (6.8 * Age)));
+            //         let tdee = Math.floor(bmr * Activity);
             //         //Populate info.
             //         $('.weight').replaceWith('<p class="weight">Weight(kg): ' + Weight + '</p>');
             //         $('.height').replaceWith('<p class="height">Height(cm): ' + Height + '</p>');
@@ -117,28 +121,29 @@ $(document).ready(function (){
             //         alert(data);
             //     }
             // });
-}
+            }
         }
     });
 
     //Adding a new user
-    $('#signUpForm').on('submit', function (event) {
+    $('#signUpForm').on('submit', (event) => {
         if ($('#signUpForm').valid() == true) {
             event.stopPropagation();
             event.preventDefault();	
-            //Get variables from within this form.
-            var Username = $('#signUpForm #Username').val();
-            var Password = $('#signUpForm #Password').val();
-            //Get variable from above this form.
-            var Weight = +$('#Weight').val();
-            var Height = +$('#Height').val();
-            var Age = +$('#Age').val();
-            var Activity = +$('#Activity').val();
-            //Send variable to php script for saving.
+            //Get letiables from within this form.
+            let Username = $('#signUpUsername').val();
+            let Password = $('#signUpPassword').val();
+            //Get letiable from above this form.
+            let Weight = +$('#weight').val();
+            let Height = +$('#height').val();
+            let Age = +$('#age').val();
+            let Activity = +$('#activity').val();
+            //Send letiable to php script for saving.
+            console.log(Username + Password);
             $.post(
                 "php/newUser.php", 
                 { Username: Username, Password: Password, Weight: Weight, Height: Height, Age: Age, Activity: Activity }, 
-                function (data) {
+                (data) => {
                     alert(data);
                     //Check for no existing user, or an incorrect password.
                     if (data != "Username already exists, to replace data, enter the correct password." && data != "Password is incorrect."){
@@ -151,8 +156,9 @@ $(document).ready(function (){
             );
         }
     });
+
     //Return to Home
-    $('#returnButton').on('click', function (event) {
+    $('#returnButton').on('click', (event) => {
         event.stopPropagation();
         event.preventDefault();	
         //Go to home view

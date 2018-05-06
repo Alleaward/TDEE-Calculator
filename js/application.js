@@ -21,7 +21,8 @@ $(document).ready( () => {
             //Go to new view
             $('#inputForm').slideUp().fadeOut();
             $('#information').fadeIn().slideDown();
-            $('#loginForm').slideUp().fadeOut();
+            $('#loginForm').slideUp().fadeOut();            $('#information').css({"display": "flex"});
+
             $('#signUpForm').fadeIn().slideDown();
             //Insert the information.
             $('.weight').replaceWith('<p class="weight">Weight(kg): ' + Weight + '</p>' );
@@ -43,9 +44,7 @@ $(document).ready( () => {
             let Height = 0;
             let Age = 0;
             let Activity = 0;
-            console.log("1");
             //Send the data.
-            console.log(Username + Password);
             $.post("php/retrieveUser.php", { "Username": Username, "Password": Password })
                 .done( (data) => {
                     console.log(data);
@@ -53,9 +52,9 @@ $(document).ready( () => {
                         $('.incorrectLogin').fadeIn().slideDown();
                     }else{
                         let rawData = JSON.parse(data);
-                        console.log("2");
-                        console.log(data);
-                        console.log(rawData);
+                        // console.log("2");
+                        // console.log(data);
+                        // console.log(rawData);
                         if (rawData === "Username or password is invalid."){
                             alert("Username or password is invalid.");
     
@@ -84,6 +83,7 @@ $(document).ready( () => {
                         //New View
                         $('#inputForm').slideUp().fadeOut();
                         $('#information').fadeIn().slideDown();
+                        $('#information').css({"display": "flex"});
                         $('#loginForm').slideUp().fadeOut();
                         $('#signUpForm').fadeIn().slideDown();
                         $('.incorrectLogin').slideUp().fadeOut();
@@ -138,19 +138,21 @@ $(document).ready( () => {
             let Height = +$('#height').val();
             let Age = +$('#age').val();
             let Activity = +$('#activity').val();
-            //Send letiable to php script for saving.
-            console.log(Username + Password);
+
             $.post(
                 "php/newUser.php", 
                 { Username: Username, Password: Password, Weight: Weight, Height: Height, Age: Age, Activity: Activity }, 
                 (data) => {
-                    alert(data);
                     //Check for no existing user, or an incorrect password.
-                    if (data != "Username already exists, to replace data, enter the correct password." && data != "Password is incorrect."){
-                        $('#inputForm').fadeIn().slideDown();
-                        $('#loginForm').fadeIn().slideDown();
-                        $('#information').slideUp().fadeOut();
-                        $('#signUpForm').slideUp().fadeOut();
+                    if (data != "Username already exists, to replace data enter the correct password." 
+                    && data != "Password is incorrect." 
+                    && data != "User data was NOT inserted."){
+                        $('.saved').fadeIn().slideDown();
+                        $('.notSaved').slideUp().fadeOut();
+                    }else{
+                        $('.notSaved').fadeIn().slideDown();
+                        $('.saved').slideUp().fadeOut();
+
                     }
                 }
             );
@@ -165,6 +167,8 @@ $(document).ready( () => {
         $('#inputForm').fadeIn().slideDown();
         $('#information').slideUp().fadeOut();
         $('#loginForm').fadeIn().slideDown();
+        $('.saved').slideUp().fadeOut();
+        $('.notSaved').slideUp().fadeOut();
     });
 });
 

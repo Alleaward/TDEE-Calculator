@@ -2,6 +2,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TDEE Calculator</title>
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
@@ -17,18 +21,18 @@
         <div class="container">
           <div class="col s2"></div>
             <form id="inputForm" action="" method="" class="col s8 center-align">
-                <p>TDEE Calculator</p>
+                <h1>TDEE Calculator</h1>
                 <div class="row">
                     <div class="input-field col s4">
-                        <input placeholder="Weight(kg):" id="weight" type="text" class="validate" name="Weight" minlength="2" maxlength="3" required>
+                        <input placeholder="Weight(kg):" id="weight" type="number" class="validate" name="Weight" minlength="2" maxlength="3" required>
                         <!-- <label for="weight">Weight(kg):</label> -->
                     </div>
                     <div class="input-field col s4">
-                        <input placeholder="Height(cm):" id="height" type="text" class="validate" name="Height" minlength="3" maxlength="3" required>
+                        <input placeholder="Height(cm):" id="height" type="number" class="validate" name="Height" minlength="3" maxlength="3" required>
                         <!-- <label for="height">Height(cm):</label> -->
                     </div>
                     <div class="input-field col s4">
-                        <input placeholder="Age" id="age" type="text" class="validate" name="Age" minlength="1" maxlength="2" required>
+                        <input placeholder="Age:" id="age" type="number" class="validate" name="Age" minlength="1" maxlength="2" required>
                         <!-- <label for="age">Age:</label> -->
                     </div>
                     <div class="input-field col s12" name="Activity" >
@@ -39,9 +43,9 @@
                             <option value="1.725">Very active: Heavy Exercise, Sports 6 &ndash; 7 days per week</option>
                             <option value="1.9">Extremely active: Very heavy exercise, Physical Job or Training 2x per day</option>
                         </select>
-                        <label>Activity Level:</label>
+                        <label  class="activityLabel">Activity Level:</label>
                     </div>
-                    <button id="newUserSubmit" class="btn waves-effect waves-light" type="submit" name="action" onclick="">Calculate
+                    <button id="newUserSubmit" class="btn waves-effect waves-light light-green" type="submit" name="action" onclick="">Calculate
                         <i class="material-icons right">send</i>
                     </button>
                 </div>
@@ -52,8 +56,8 @@
         <div class="container">
           <div class="col s2"></div>
             <form id="loginForm" action="" method="" class="col s8 center-align">
-                <p>Already been here? Login!</p>
-                <p class="incorrectLogin hideDiv">Your username or login was incorrect.</p>
+                <h5>Already been here? Login!</h5>
+                <h5 class="incorrectLogin hideDiv">Your username or login was incorrect.</h5>
                 <div class="row">
                     <div class="input-field col s12 l6 center-align">
                         <input id="loginUsername" placeholder="Username:" type="text" class="validate" name="loginUsername" minlength="5" required>
@@ -63,7 +67,7 @@
                         <input id="loginPassword" placeholder="Password:" type="password" class="validate" name="loginPassword" minlength="5" autocomplete="on" required>
                         <!-- <label for="LoginPassword">Password:</label> -->
                     </div>
-                    <button id="loginSubmit" class="btn waves-effect waves-light" type="submit" name="action">Login
+                    <button id="loginSubmit" class="btn waves-effect waves-light light-green" type="submit" name="action">Login
                         <i class="material-icons right">send</i>
                     </button>
                 </div>
@@ -74,24 +78,31 @@
          <div class="container">
           <div class="col s2"></div>
             <section id="information" class="col s8 center-align hideDiv">
-                <p>Your information</p>
                 <p class="weight"></p>
                 <p class="height"></p>
                 <p class="age"></p>
                 <p class="activity"></p>
                 <p class="tdee"></p>
                 <form id="signUpForm" class="col s12" action="" method="">
-                    <p>Enter a username and password to save your data. (Use mock data)</p>
-                    <input class="col s6" type="text" name="signUpUsername" id="signUpUsername" placeholder="Username:" minlength="5" required>
-                    <input class="col s6" type="password" name="signUpPassword" id="signUpPassword" placeholder="Password:" minlength="5" autocomplete="on" required>
-                    <button id="signUpButton" class="btn waves-effect waves-light" type="submit" name="signUpButton">Save Data
-                        <i class="material-icons right">send</i>
-                    </button>
-                    <button id="returnButton" class="btn waves-effect waves-light" type="submit" name="submit">Home
-                        <i class="material-icons right">send</i>
-                    </button>
+                    <h5>Enter a username and password to save your data. (Use mock data)</h5>
+                    <h5 class="saved hideDiv">Data successfully saved.</h5>
+                    <h5 class="notSaved hideDiv">Data storage unsuccessful. Username or Password may be incorrect.</h5>  
+                    <div class="row">
+                        <div class="input-field col s12 l6 center-align">                  
+                            <input class="validate" type="text" name="signUpUsername" id="signUpUsername" placeholder="Username:" minlength="5" required>
+                        </div>
+                        <div class="input-field col s12 l6 center-align">
+                            <input class="validate" type="password" name="signUpPassword" id="signUpPassword" placeholder="Password:" minlength="5" autocomplete="on" required>
+                        </div>
+                        <button id="signUpButton" class="btn waves-effect waves-light light-green" type="submit" name="signUpButton">Save Data
+                            <i class="material-icons right">send</i>
+                        </button>
+                        <button id="returnButton" class="btn waves-effect waves-light light-green" type="submit" name="submit">Home
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
                 </form> 
-            </form>
+            </section>
           <div class="col s2"></div>
         </div>
     </section>

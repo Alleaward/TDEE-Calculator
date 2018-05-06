@@ -1,24 +1,85 @@
+html{
+    background-image: url("../img/Sports.png");
+    background-repeat: repeat;
+    box-shadow: inset 0 0 0 1000px rgba(43, 43, 43, 0.2);
+    height: 100vh;
+}
 body{
-    background-color: #ffffff;
+    background-color: rgba($color: #ffffff, $alpha: .4);
     max-width: 760px;
-    margin: auto;
+    margin: 50px auto;
+    padding: 50px 0;
+    box-shadow: 0 2px 100px 0 rgba(255, 255, 255, .8);
+    border-radius: 30px;
 }
-#newInput {
-}
-#userInfo {
-    // border: 3px lightgreen solid;
-}
-// #loginInfo {
-    // border: 3px lightcoral solid;
-// }
 .incorrectLogin {
     color: red;
     font-weight: bold;
 }
+.saved {
+    color: green;
+    font-weight: bold;
+}
+.notSaved {
+    color: red;
+    font-weight: bold;
+}
+.tdee{
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 120%;
+}
 footer{
     margin-top: 20px;
 }
-
+.flex{
+    display: flex;
+}
 .hideDiv{
     display: none;
+}
+#loginForm{
+    .input-field>label:not(.label-icon).active {
+        transform: translateY(-10px) scale(0.8);
+    }
+    .input-field>label{
+        transform: translateY(-10px);
+    }
+}
+#inputForm{
+    .input-field>label:not(.label-icon).active {
+        transform: translateY(-30px) scale(0.8);
+    }
+    .input-field>label {
+        transform: translateY(-35px);
+    }       
+    .input-field>label.activityLabel {
+        transform: translateY(14px) !important;
+    }
+}
+#information{
+    display: flex;
+    display: none;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    p{
+        width: 48%;
+    }
+}
+input{
+    margin-top: 50px;
+}
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgba($color: #000000, $alpha: 0.625);
+    opacity: 1;
+    /* Firefox */
+}
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: rgba($color: #000000, $alpha: 0.625);
+}
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: rgba($color: #000000, $alpha: 0.625);
 }
